@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,6 +30,8 @@ class MyApp extends StatelessWidget {
         ),
         body: UiKitView(
           viewType: 'plugins.flutter.io/custom_platform_view',
+          creationParams: {'text': 'Flutter传给IOSTextView的参数'},
+          creationParamsCodec: StandardMessageCodec(),
         ),
       ),
     );

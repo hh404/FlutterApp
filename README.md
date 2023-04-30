@@ -17,3 +17,4 @@ samples, guidance on mobile development, and a full API reference.
 # FlutterApp
 
 https://juejin.cn/post/6884954806692085768
+https://github.com/better-dart/flutter-do/blob/6187e7cb626f561f7bd178019351aae298e12721/flutter_guide/lib/mixing/platform_view_demo.dart
