@@ -20,7 +20,28 @@ void main() {
 //   }
 // }
 
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: new Scaffold(
+//         appBar: new AppBar(
+//           title: new Text("Demo Project"),
+//         ),
+//         body: UiKitView(
+//           viewType: 'plugins.flutter.io/custom_platform_view',
+//           creationParams: {'text': 'Flutter传给IOSTextView的参数'},
+//           creationParamsCodec: StandardMessageCodec(),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
 class MyApp extends StatelessWidget {
+   static const platform =
+      const MethodChannel('com.flutter.guide.MyFlutterView');
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,11 +49,19 @@ class MyApp extends StatelessWidget {
         appBar: new AppBar(
           title: new Text("Demo Project"),
         ),
-        body: UiKitView(
+        body: Column(children: [
+        ElevatedButton(
+          child: Text('传递参数给原生View'),
+          onPressed: () {
+            platform.invokeMethod('setText', {'name': 'laomeng', 'age': 18});
+          },
+        ),
+        Expanded(child: UiKitView(
           viewType: 'plugins.flutter.io/custom_platform_view',
           creationParams: {'text': 'Flutter传给IOSTextView的参数'},
           creationParamsCodec: StandardMessageCodec(),
-        ),
+        )),
+      ]),
       ),
     );
   }
